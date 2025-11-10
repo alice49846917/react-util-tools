@@ -1,0 +1,54 @@
+{
+  "name": "react-util-tools",
+  "version": "1.0.2",
+  "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations and more",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --watch"
+  },
+  "keywords": [
+    "react",
+    "utils",
+    "tools",
+    "throttle",
+    "debounce",
+    "date-fns",
+    "decimal",
+    "format",
+    "device",
+    "browser-detection",
+    "money-format",
+    "url-params",
+    "typescript"
+  ],
+  "author": "alice & bobby",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": ">=19.2.0"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "decimal.js": "^10.6.0"
+  }
+}
