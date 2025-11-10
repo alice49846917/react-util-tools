@@ -1,6 +1,6 @@
 {
   "name": "react-util-tools",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations and more",
   "type": "module",
   "main": "dist/index.cjs",
@@ -42,12 +42,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dj49846917/react-util-tools.git"
+    "url": "git+https://github.com/alice49846917/react-util-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/dj49846917/react-util-tools/issues"
+    "url": "https://github.com/alice49846917/react-util-tools/issues"
   },
-  "homepage": "https://github.com/dj49846917/react-util-tools#readme",
+  "homepage": "https://github.com/alice49846917/react-util-tools#readme",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
