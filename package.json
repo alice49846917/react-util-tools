@@ -1,6 +1,6 @@
 {
   "name": "react-util-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations and more",
   "type": "module",
   "main": "dist/index.cjs",
@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --watch"
+    "dev": "tsup src/index.ts --watch",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "react",
@@ -35,6 +36,14 @@
   ],
   "author": "alice & bobby",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_USERNAME/react-util-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/react-util-tools/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/react-util-tools#readme",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
