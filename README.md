@@ -13,7 +13,7 @@
 ## 安装
 
 ```bash
-npm install @dj49846917/react-tools
+npm install react-util-tools
 ```
 
 ## 快速开始

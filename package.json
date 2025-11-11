@@ -1,6 +1,6 @@
 {
   "name": "react-util-tools",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations and more",
   "type": "module",
   "main": "dist/index.cjs",
