@@ -19,6 +19,9 @@ coverage/
 .env.test.local
 .env.production.local
 
+# npm credentials
+.npmrc
+
 # Logs
 logs/
 *.log
