@@ -187,3 +187,68 @@ export function formatPercent(
   const num = multiply ? value * 100 : value
   return num.toFixed(decimals) + '%'
 }
+
+/**
+ * 邮箱脱敏：只展示前3个字符+@和后面的字符串，中间用***表示
+ * @param email 邮箱地址
+ * @returns 脱敏后的邮箱地址
+ * @example
+ * maskEmail('dj49846917@proton.me') // 'dj4***@proton.me'
+ * maskEmail('abc@example.com') // 'abc***@example.com'
+ */
+export function maskEmail(email: string): string {
+  if (!email || typeof email !== 'string') {
+    return ''
+  }
+
+  const atIndex = email.indexOf('@')
+  if (atIndex <= 0) {
+    return email // 无效邮箱，返回原值
+  }
+
+  const localPart = email.substring(0, atIndex)
+  const domainPart = email.substring(atIndex)
+
+  // 只展示前3个字符
+  const visiblePart = localPart.substring(0, 3)
+  
+  return `${visiblePart}***${domainPart}`
+}
+
+/**
+ * 邮箱解脱敏：将脱敏的邮箱还原（需要提供原始邮箱）
+ * @param maskedEmail 脱敏后的邮箱地址
+ * @param originalEmail 原始邮箱地址
+ * @returns 解脱敏后的邮箱地址
+ * @example
+ * unmaskEmail('dj4***@proton.me', 'dj49846917@proton.me') // 'dj49846917@proton.me'
+ */
+export function unmaskEmail(maskedEmail: string, originalEmail: string): string {
+  if (!maskedEmail || !originalEmail) {
+    return ''
+  }
+
+  // 验证脱敏邮箱格式
+  if (!maskedEmail.includes('***@')) {
+    return maskedEmail // 不是脱敏格式，直接返回
+  }
+
+  // 验证原始邮箱和脱敏邮箱是否匹配
+  const maskedParts = maskedEmail.split('***@')
+  const atIndex = originalEmail.indexOf('@')
+  
+  if (atIndex <= 0) {
+    return maskedEmail // 原始邮箱无效
+  }
+
+  const originalPrefix = originalEmail.substring(0, 3)
+  const originalDomain = originalEmail.substring(atIndex + 1)
+  const maskedDomain = maskedParts[1]
+
+  // 验证前缀和域名是否匹配
+  if (maskedParts[0] === originalPrefix && maskedDomain === originalDomain) {
+    return originalEmail
+  }
+
+  return maskedEmail // 不匹配，返回脱敏邮箱
+}
