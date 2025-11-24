@@ -1,6 +1,6 @@
 {
   "name": "react-util-tools",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations and more",
   "type": "module",
   "main": "dist/index.cjs",
@@ -17,11 +17,11 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --watch",
-    "prepublishOnly": "npm run build",
-    "release:patch": "npm version patch --no-git-tag-version && git add . && git commit -m 'chore: release v%s' && git tag v$(node -p \"require('./package.json').version\") && git push --follow-tags && npm publish",
-    "release:minor": "npm version minor --no-git-tag-version && git add . && git commit -m 'chore: release v%s' && git tag v$(node -p \"require('./package.json').version\") && git push --follow-tags && npm publish",
-    "release:major": "npm version major --no-git-tag-version && git add . && git commit -m 'chore: release v%s' && git tag v$(node -p \"require('./package.json').version\") && git push --follow-tags && npm publish",
-    "release": "npm run release:patch"
+    "prepublishOnly": "pnpm run build",
+    "release:patch": "pnpm version patch --no-git-tag-version && git add . && git commit -m 'chore: release v%s' && git tag v$(node -p \"require('./package.json').version\") && git push --follow-tags && pnpm publish --no-git-checks",
+    "release:minor": "pnpm version minor --no-git-tag-version && git add . && git commit -m 'chore: release v%s' && git tag v$(node -p \"require('./package.json').version\") && git push --follow-tags && pnpm publish --no-git-checks",
+    "release:major": "pnpm version major --no-git-tag-version && git add . && git commit -m 'chore: release v%s' && git tag v$(node -p \"require('./package.json').version\") && git push --follow-tags && pnpm publish --no-git-checks",
+    "release": "pnpm run release:patch"
   },
   "keywords": [
     "react",
