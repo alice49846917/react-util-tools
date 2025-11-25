@@ -2,6 +2,15 @@
 export { throttle, debounce } from './throttle/index'
 export { getQueryParam, getAllQueryParams, getQueryParamAll } from './address/index'
 export {
+  setCookie,
+  getCookie,
+  removeCookie,
+  hasCookie,
+  getAllCookies,
+  clearAllCookies
+} from './cookie/index'
+export type { CookieOptions } from './cookie/index'
+export {
   getOS,
   getBrowser,
   getBrowserEngine,
@@ -24,7 +33,9 @@ export {
   parseMoney,
   formatNumber,
   formatMoneyToChinese,
-  formatPercent
+  formatPercent,
+  maskEmail,
+  unmaskEmail
 } from './format/index'
 export {
   formatDate,
