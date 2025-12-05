@@ -1,7 +1,7 @@
 {
   "name": "react-util-tools",
-  "version": "1.0.24",
-  "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations and more",
+  "version": "1.0.25",
+  "description": "A collection of useful utilities: throttle, debounce, date formatting, device detection, money formatting, decimal calculations, Excel processing and more",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -36,6 +36,10 @@
     "browser-detection",
     "money-format",
     "url-params",
+    "excel",
+    "xlsx",
+    "sheetjs",
+    "cookie",
     "typescript"
   ],
   "author": "alice & bobby",
@@ -62,6 +66,7 @@
   "dependencies": {
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
-    "decimal.js": "^10.6.0"
+    "decimal.js": "^10.6.0",
+    "xlsx": "^0.18.5"
   }
 }

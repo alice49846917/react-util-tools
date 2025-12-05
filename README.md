@@ -60,6 +60,16 @@ const total = new Decimal('0.1').plus('0.2') // Decimal(0.3)
 
 [查看文档](./src/address/README.md)
 
+### 🍪 Cookie - Cookie 操作
+- `setCookie()` - 设置 Cookie
+- `getCookie()` - 获取 Cookie
+- `removeCookie()` - 删除 Cookie
+- `hasCookie()` - 检查 Cookie 是否存在
+- `getAllCookies()` - 获取所有 Cookie
+- `clearAllCookies()` - 清除所有 Cookie
+
+[查看文档](./src/cookie/README.md)
+
 ### 📱 Device - 设备检测
 - `getOS()` - 获取操作系统
 - `getBrowser()` - 获取浏览器类型
@@ -76,6 +86,8 @@ const total = new Decimal('0.1').plus('0.2') // Decimal(0.3)
 - `formatNumber()` - 数字格式化
 - `formatMoneyToChinese()` - 金额转中文大写
 - `formatPercent()` - 百分比格式化
+- `maskEmail()` - 邮箱脱敏
+- `unmaskEmail()` - 邮箱解脱敏
 
 [查看文档](./src/format/README.md)
 
@@ -108,6 +120,31 @@ const total = new Decimal('0.1').plus('0.2') // Decimal(0.3)
 
 [查看文档](./src/decimal/README.md)
 
+#### Decimal Utils - 高精度计算工具函数
+- `add()` - 加法运算
+- `subtract()` - 减法运算
+- `multiply()` - 乘法运算
+- `divide()` - 除法运算
+- `equals()` - 判断相等
+- `greaterThan()` / `lessThan()` - 大小比较
+- `round()` / `ceil()` / `floor()` - 取整
+- `abs()` / `negate()` - 绝对值/取反
+
+[查看文档](./src/decimal/utils/README.md)
+
+### 📊 Excel - Excel 文件处理
+基于 SheetJS (xlsx) 的 Excel 文件处理工具：
+- `XLSX` - 完整的 SheetJS 对象
+- `readExcelFile()` - 读取 Excel 文件
+- `exportJSONToExcel()` - 导出 JSON 为 Excel
+- `workbookToJSON()` - WorkBook 转 JSON
+- `jsonToWorkbook()` - JSON 转 WorkBook
+- `readExcelToJSON()` - 直接读取为 JSON
+- 支持多种格式（.xlsx, .xls, .csv 等）
+- 完整保留 SheetJS 所有功能
+
+[查看文档](./src/excel/README.md)
+
 ## 使用示例
 
 ### 节流防抖
@@ -136,6 +173,26 @@ const id = getQueryParam('id') // "123"
 const params = getAllQueryParams() // { id: "123", name: "test" }
 ```
 
+### Cookie 操作
+
+```typescript
+import { setCookie, getCookie, removeCookie } from '@dj49846917/react-tools'
+
+// 设置 Cookie
+setCookie('token', 'abc123', {
+  expires: 7 * 24 * 60 * 60, // 7天（秒）
+  path: '/',
+  secure: true,
+  sameSite: 'Strict'
+})
+
+// 获取 Cookie
+const token = getCookie('token') // "abc123"
+
+// 删除 Cookie
+removeCookie('token')
+```
+
 ### 设备检测
 
 ```typescript
@@ -152,7 +209,7 @@ if (isMobile()) {
 ### 金额格式化
 
 ```typescript
-import { formatMoney, parseMoney, formatMoneyToChinese } from 'react-tools'
+import { formatMoney, parseMoney, formatMoneyToChinese, maskEmail } from 'react-tools'
 
 formatMoney(1234.56) // "¥1,234.56"
 formatMoney(1234.56, { symbol: '$' }) // "$1,234.56"
@@ -160,6 +217,9 @@ formatMoney(1234.56, { symbol: '$' }) // "$1,234.56"
 parseMoney('¥1,234.56') // 1234.56
 
 formatMoneyToChinese(1234.56) // "壹仟贰佰叁拾肆元伍角陆分"
+
+// 邮箱脱敏
+maskEmail('dj49846917@proton.me') // "dj4***@proton.me"
 ```
 
 ### 日期处理
@@ -203,9 +263,9 @@ getUTCWeekStart(2024, 10) // Date 对象
 ### 高精度计算
 
 ```typescript
-import { Decimal } from 'react-tools'
+import { Decimal, add, multiply, divide } from 'react-tools'
 
-// 解决浮点数精度问题
+// 使用 Decimal 类
 const result = new Decimal('0.1').plus('0.2')
 console.log(result.toString()) // "0.3"
 
@@ -214,6 +274,32 @@ const price = new Decimal('19.99')
 const quantity = new Decimal('3')
 const total = price.times(quantity)
 console.log(total.toFixed(2)) // "59.97"
+
+// 使用工具函数（返回 number 类型）
+add(0.1, 0.2) // 0.3
+multiply(19.99, 3) // 59.97
+divide(100, 3) // 33.333...
+```
+
+### Excel 文件处理
+
+```typescript
+import { readExcelToJSON, exportJSONToExcel } from 'react-tools'
+
+// 读取 Excel 文件
+async function handleFileUpload(file: File) {
+  const data = await readExcelToJSON(file)
+  console.log(data) // [{ name: '张三', age: 25 }, ...]
+}
+
+// 导出 JSON 为 Excel
+function exportData() {
+  const data = [
+    { name: '张三', age: 25, city: '北京' },
+    { name: '李四', age: 30, city: '上海' }
+  ]
+  exportJSONToExcel(data, 'users.xlsx', 'UserList')
+}
 ```
 
 ## TypeScript 支持
@@ -244,6 +330,7 @@ import { formatMoney, Decimal } from 'react-tools'
 - `date-fns` - 日期处理
 - `date-fns-tz` - 时区处理
 - `decimal.js` - 高精度计算
+- `xlsx` - Excel 文件处理
 
 ## 许可证
 

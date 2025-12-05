@@ -116,3 +116,36 @@ export {
   abs,
   negate
 } from './decimal/utils/index'
+export {
+  XLSX,
+  read,
+  readFile,
+  write,
+  writeFile,
+  writeFileXLSX,
+  utils,
+  readExcelFile,
+  workbookToJSON,
+  jsonToWorkbook,
+  exportExcelFile,
+  exportJSONToExcel,
+  readExcelToJSON,
+  getSheetNames,
+  getSheet,
+  sheetToCSV,
+  sheetToHTML,
+  tableToSheet,
+  aoaToSheet,
+  sheetToAOA
+} from './excel/index'
+export type {
+  WorkBook,
+  WorkSheet,
+  CellObject,
+  Range,
+  WritingOptions,
+  ParsingOptions,
+  BookType,
+  Sheet2JSONOpts,
+  JSON2SheetOpts
+} from './excel/index'
