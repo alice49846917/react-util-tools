@@ -145,6 +145,19 @@ const total = new Decimal('0.1').plus('0.2') // Decimal(0.3)
 
 [查看文档](./src/excel/README.md)
 
+### 🔤 String - 字符串工具
+强大的字符串处理工具集合：
+- `camelCase()` / `snakeCase()` / `kebabCase()` - 命名转换
+- `truncate()` / `padStart()` / `padEnd()` - 字符串操作
+- `maskPhone()` / `maskIdCard()` / `maskBankCard()` - 数据脱敏
+- `isValidPhone()` / `isValidEmail()` / `isValidUrl()` - 格式验证
+- `randomString()` / `uuid()` - 随机生成
+- `toBase64()` / `fromBase64()` - Base64 编解码
+- `escapeHtml()` / `stripHtml()` - HTML 处理
+- 更多...
+
+[查看文档](./src/string/README.md)
+
 ## 使用示例
 
 ### 节流防抖
@@ -300,6 +313,31 @@ function exportData() {
   ]
   exportJSONToExcel(data, 'users.xlsx', 'UserList')
 }
+```
+
+### 字符串处理
+
+```typescript
+import {
+  camelCase,
+  maskPhone,
+  isValidEmail,
+  randomString,
+  uuid
+} from 'react-tools'
+
+// 命名转换
+camelCase('hello-world') // 'helloWorld'
+
+// 数据脱敏
+maskPhone('13812345678') // '138****5678'
+
+// 格式验证
+isValidEmail('test@example.com') // true
+
+// 随机生成
+randomString(8) // 'aB3xY9Zk'
+uuid() // '550e8400-e29b-41d4-a716-446655440000'
 ```
 
 ## TypeScript 支持
