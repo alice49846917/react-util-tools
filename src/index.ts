@@ -35,8 +35,16 @@ export {
   formatMoneyToChinese,
   formatPercent,
   maskEmail,
-  unmaskEmail
+  unmaskEmail,
+  toLocalString,
+  integerTokenArr,
+  removeInvalidZero,
+  formatePrecision,
+  formateAmount,
+  formateFaitAmount,
+  tryRun
 } from './format/index'
+export type { AmountNum } from './format/index'
 export {
   formatDate,
   formatDateOnly,
