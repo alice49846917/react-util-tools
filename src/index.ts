@@ -195,6 +195,7 @@ export {
   maskIdCard,
   maskBankCard,
   maskName,
+  maskString,
   isValidPhone,
   isValidEmail,
   isValidUrl,

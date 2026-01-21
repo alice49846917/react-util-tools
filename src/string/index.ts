@@ -429,6 +429,31 @@ export function maskName(name: string): string {
 }
 
 /**
+ * 通用字符串脱敏：保留前后指定位数，中间用省略号替换
+ * @param str 字符串
+ * @param visibleChars 前后各保留的字符数，默认 3
+ * @param mask 脱敏符号，默认 '...'
+ * @returns 脱敏后的字符串
+ * @example
+ * maskString('123wedwdwddwed567', 3) // '123...567'
+ * maskString('abcdefghijk', 2) // 'ab...jk'
+ * maskString('hello', 2, '***') // 'he***lo'
+ */
+export function maskString(str: string, visibleChars = 3, mask = '...'): string {
+  if (!str) return ''
+  
+  // 如果字符串长度小于等于需要显示的字符数，直接返回原字符串
+  if (str.length <= visibleChars * 2) {
+    return str
+  }
+  
+  const start = str.slice(0, visibleChars)
+  const end = str.slice(-visibleChars)
+  
+  return `${start}${mask}${end}`
+}
+
+/**
  * 判断是否为有效的手机号（中国大陆）
  * @param phone 手机号
  * @returns 是否有效

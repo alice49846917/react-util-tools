@@ -90,6 +90,7 @@ import {
   maskIdCard,
   maskBankCard,
   maskName,
+  maskString,
   maskEmail
 } from 'react-util-tools'
 
@@ -98,6 +99,22 @@ maskPhone('13812345678') // '138****5678'
 
 // 身份证号脱敏
 maskIdCard('110101199001011234') // '110101********1234'
+
+// 银行卡号脱敏
+maskBankCard('6222021234567890') // '6222 **** **** 7890'
+
+// 姓名脱敏
+maskName('张三') // '张*'
+maskName('李四光') // '李*光'
+
+// 通用字符串脱敏
+maskString('123wedwdwddwed567', 3) // '123...567'
+maskString('abcdefghijk', 2) // 'ab...jk'
+maskString('hello', 2, '***') // 'he***lo'
+
+// 邮箱脱敏（在 format 模块）
+maskEmail('test@example.com') // 'tes***@example.com'
+```
 
 // 银行卡号脱敏
 maskBankCard('6222021234567890') // '6222 **** **** 7890'
@@ -318,6 +335,7 @@ extractNumbers('abc123def456') // [123, 456]
 - `maskIdCard(idCard)` - 身份证号脱敏
 - `maskBankCard(cardNumber)` - 银行卡号脱敏
 - `maskName(name)` - 姓名脱敏
+- `maskString(str, visibleChars?, mask?)` - 通用字符串脱敏
 
 ### 格式验证
 
